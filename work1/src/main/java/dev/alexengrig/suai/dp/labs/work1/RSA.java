@@ -16,13 +16,13 @@ public class RSA {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input bit length:");
         int bitLength = Integer.parseInt(scanner.nextLine());
+        RSAParameters parameters = new RSAParameters(bitLength);
+        System.out.println(parameters);
         System.out.println("Input message:");
         String text = scanner.nextLine();
         byte[] bytes = text.getBytes();
         BigInteger message = new BigInteger(bytes);
         System.out.println(" Original message: " + message);
-        RSAParameters parameters = new RSAParameters(bitLength);
-        System.out.println(parameters);
         PublicRSAParameters publicParameters = parameters.getPublicParameters();
         RSAEncoder encoder = new RSAEncoder(publicParameters);
         BigInteger encrypt = encoder.encrypt(message);
